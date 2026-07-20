@@ -161,6 +161,7 @@ const COMMANDS = {
   banner: { desc: 'Display the welcome banner', category: 'basic' },
   cowsay: { desc: 'Display a cow saying something', category: 'fun' },
   fortune: { desc: 'Display a random quote', category: 'fun' },
+  hireme: { desc: 'hireme --option [whatsapp|phone|email] - Contact info', category: 'info' },
 };
 
 const fortunes = [
@@ -372,6 +373,35 @@ function App() {
         setBootIdx(0);
         setLines([]);
         break;
+      case 'hireme': {
+        const option = args[0];
+        if (option === '--whatsapp' || option === '--phone') {
+          addLine('  📞 Phone: +353 858443551 | +91 98359 62051', '#00ff41');
+          addLine('  💬 WhatsApp: +91 98359 62051', '#00ff41');
+          addLine('', '#e0e0e0');
+          addLine('  ╔════════════════════════════════════════════╗', '#00d4ff');
+          addLine('  ║  Scan QR or save number to start chatting  ║', '#00d4ff');
+          addLine('  ╚════════════════════════════════════════════╝', '#00d4ff');
+        } else if (option === '--email') {
+          addLine('  📧 Email: kumars9@tcd.ie', '#00ff41');
+          addLine('', '#e0e0e0');
+          addLine('  ─────────────────────────────────────────────────', '#666');
+          addLine('  Click the link below to send an email directly:', '#ffd700');
+          addLine('', '#e0e0e0');
+          addLine('  🔗 https://mail.google.com/mail/?view=cm&fs=1&to=kumars9@tcd.ie', '#00d4ff');
+        } else {
+          addLine('  Usage: hireme --option [whatsapp|phone|email]', '#ffd700');
+          addLine('', '#e0e0e0');
+          addLine('  Options:', '#e0e0e0');
+          addLine('    --whatsapp   Contact via WhatsApp', '#00ff41');
+          addLine('    --phone      Contact via Phone Call', '#00ff41');
+          addLine('    --email      Contact via Email', '#00ff41');
+          addLine('', '#e0e0e0');
+          addLine('  Example:', '#e0e0e0');
+          addLine('    hireme --email', '#00ff41');
+        }
+        break;
+      }
       case 'sudo': {
         const sudoCmd = args.join(' ');
         if (sudoCmd.toLowerCase().includes('make me a coffee')) {

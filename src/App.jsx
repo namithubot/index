@@ -385,7 +385,7 @@ function App() {
           addLine('  ╔════════════════════════════════════════════╗', '#00d4ff');
           addLine('  ║  Scan QR or save number to start chatting  ║', '#00d4ff');
           addLine('  ╚════════════════════════════════════════════╝', '#00d4ff');
-          addLine('  <img src="/qr.svg">', '#00d4ff');
+          addLine('  <img src="/index/qr.svg">', '#00d4ff');
         } else if (option === '--email') {
           addLine('  📧 Email: <a href="mailto:kumars9@tcd.ie">kumars9@tcd.ie</a>', '#00ff41');
           addLine('', '#e0e0e0');

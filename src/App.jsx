@@ -164,7 +164,7 @@ const COMMANDS = {
   banner: { desc: 'Display the welcome banner', category: 'basic' },
   cowsay: { desc: 'Display a cow saying something', category: 'fun' },
   fortune: { desc: 'Display a random quote', category: 'fun' },
-  hireme: { desc: 'hireme --option [whatsapp|phone|email] - Contact info', category: 'info' },
+  hireme: { desc: 'hireme --option [whatsapp|phone|email|linkedin] - Contact info', category: 'info' },
 };
 
 const fortunes = [
@@ -379,29 +379,33 @@ function App() {
       case 'hireme': {
         const option = args[0];
         if (option === '--whatsapp' || option === '--phone') {
-          addLine('  📞 Phone: +353 858443551 | +91 98359 62051', '#00ff41');
-          addLine('  💬 WhatsApp: +91 98359 62051', '#00ff41');
+          addLine('  📞 Phone: <a href="tel:+353 858443551"> +353 858443551</a>', '#00ff41');
+          addLine('  💬 WhatsApp: <a href="wa.link/bi6pu2">+91 98359 62051</a>', '#00ff41');
           addLine('', '#e0e0e0');
           addLine('  ╔════════════════════════════════════════════╗', '#00d4ff');
           addLine('  ║  Scan QR or save number to start chatting  ║', '#00d4ff');
           addLine('  ╚════════════════════════════════════════════╝', '#00d4ff');
+          addLine('  <img src="/qr.svg">', '#00d4ff');
         } else if (option === '--email') {
-          addLine('  📧 Email: kumars9@tcd.ie', '#00ff41');
+          addLine('  📧 Email: <a href="mailto:kumars9@tcd.ie">kumars9@tcd.ie</a>', '#00ff41');
           addLine('', '#e0e0e0');
           addLine('  ─────────────────────────────────────────────────', '#666');
-          addLine('  Click the link below to send an email directly:', '#ffd700');
+          addLine('  Click the link to send an email directly.', '#ffd700');
+        } else if (option === '--linkedin') {
+          addLine('  🔗 LinkedIn: <a href="https://linkedin.com/in/namithubot">linkedin.com/in/namithubot</a>', '#00ff41');
           addLine('', '#e0e0e0');
-          addLine('  🔗 https://mail.google.com/mail/?view=cm&fs=1&to=kumars9@tcd.ie', '#00d4ff');
+          addLine('  Connect with me professionally on LinkedIn! 🚀', '#ffd700');
         } else {
-          addLine('  Usage: hireme --option [whatsapp|phone|email]', '#ffd700');
+          addLine('  Usage: hireme --option [whatsapp|phone|email|linkedin]', '#ffd700');
           addLine('', '#e0e0e0');
           addLine('  Options:', '#e0e0e0');
           addLine('    --whatsapp   Contact via WhatsApp', '#00ff41');
           addLine('    --phone      Contact via Phone Call', '#00ff41');
           addLine('    --email      Contact via Email', '#00ff41');
+          addLine('    --linkedin   Connect on LinkedIn', '#00ff41');
           addLine('', '#e0e0e0');
           addLine('  Example:', '#e0e0e0');
-          addLine('    hireme --email', '#00ff41');
+          addLine('    hireme --linkedin', '#00ff41');
         }
         break;
       }

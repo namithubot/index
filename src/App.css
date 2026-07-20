@@ -1,11 +1,12 @@
 .terminal-container {
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #0c0c0c;
-  padding: 16px;
+  padding: 12px;
   overflow: hidden;
 }
 
@@ -45,7 +46,7 @@
 .terminal-header {
   display: flex;
   align-items: center;
-  padding: 10px 16px;
+  padding: 8px 12px;
   background: #2a2a2a;
   border-bottom: 1px solid #333;
   user-select: none;
@@ -54,13 +55,13 @@
 
 .terminal-dots {
   display: flex;
-  gap: 8px;
-  margin-right: 16px;
+  gap: 6px;
+  margin-right: 12px;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
 }
 
@@ -78,21 +79,24 @@
 
 .terminal-title {
   color: #888;
-  font-size: 13px;
+  font-size: 12px;
   font-family: 'Fira Code', monospace;
   flex: 1;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .terminal-spacer {
-  width: 52px;
+  width: 46px;
 }
 
 .terminal-body {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 16px;
+  padding: 12px;
   background: #1a1a1a;
   cursor: text;
   position: relative;
@@ -105,7 +109,7 @@
 
 .line {
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
   animation: fadeIn 0.05s ease-out;
@@ -117,20 +121,21 @@
 
 .input-line {
   display: flex;
-  align-items: center;
-  margin-top: 4px;
+  align-items: flex-start;
+  margin-top: 2px;
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.5;
   flex-wrap: wrap;
 }
 
 .prompt {
-  white-space: pre;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 0px;
   font-family: 'Fira Code', 'Consolas', monospace;
   flex-shrink: 0;
+  font-size: 13px;
 }
 
 .prompt-user {
@@ -210,38 +215,84 @@
   text-shadow: 0 0 0 #e0e0e0;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Small screens */
+@media (max-width: 640px) {
   .terminal-container {
-    padding: 8px;
+    padding: 0;
   }
-  
+
   .terminal {
     max-height: none;
-    border-radius: 6px;
+    border-radius: 0;
+    border: none;
+    height: 100vh;
+    height: 100dvh;
+    box-shadow: none;
   }
-  
-  .terminal-body {
-    padding: 12px;
+
+  .terminal-header {
+    padding: 6px 8px;
   }
-  
-  .line, .input-line, .terminal-input, .cursor-blink, .prompt {
-    font-size: 12px;
+
+  .terminal-dots {
+    gap: 5px;
+    margin-right: 8px;
   }
-  
-  .terminal-title {
-    font-size: 11px;
-  }
-  
+
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .terminal-title {
+    font-size: 10px;
+  }
+
+  .terminal-spacer {
+    width: 36px;
+  }
+
+  .terminal-body {
+    padding: 8px;
+  }
+
+  .line, .input-line, .terminal-input, .cursor-blink, .prompt {
+    font-size: 11px;
   }
 }
 
-@media (max-width: 480px) {
+/* Very small screens */
+@media (max-width: 380px) {
   .line, .input-line, .terminal-input, .cursor-blink, .prompt {
-    font-size: 11px;
+    font-size: 10px;
+  }
+
+  .terminal-header {
+    padding: 4px 6px;
+  }
+
+  .terminal-body {
+    padding: 6px;
+  }
+
+  .prompt-path {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .terminal {
+    max-height: 90vh;
+  }
+
+  .line, .input-line, .terminal-input, .cursor-blink, .prompt {
+    font-size: 12px;
   }
 }
 
